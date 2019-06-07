@@ -23,9 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 引入api
-
+require('./routes/admin')(app)
 app.use('/', indexRouter);
-app.use('/admin/api', adminRouter);
+// app.use('/admin/api', adminRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

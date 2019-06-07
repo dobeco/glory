@@ -1,10 +1,6 @@
-var express = require('express');
+/* var express = require('express');
 var router = express.Router();
 const Category = require('../../models/Category');
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 
 // 新建分类
 router.post('/categories', async  (req,res) => {
@@ -42,4 +38,57 @@ router.get('/categories/:id', async (req, res) => {
 
 
 
-module.exports = router;
+module.exports = router; */
+module.exports = app => {
+  var express = require('express');
+  var router = express.Router({ mergeParams: true });
+  const Category = require('../../models/Category');
+
+  // 新建分类
+  router.post('/', async (req, res) => {
+    const model = await req.Model.create(req.body);
+    res.send(model);
+  });
+
+  // 更新分类数据
+  router.put('/:id', async (req, res) => {
+    const model = await req.Model.findByIdAndUpdate(req.params.id, req.body);
+    res.send(model);
+  });
+
+  // 删除分类数据
+  router.delete('/:id', async (req, res) => {
+    await req.Model.findByIdAndDelete(req.params.id, req.body);
+    res.send({
+      success: true
+    });
+
+
+  });
+
+
+  // 获取分类列表
+  router.get('/', async (req, res) => {
+    const queryOptions = {};
+    if (req.Model.modelName === 'Category') {
+      queryOptions.populate = 'parent'
+    }
+    const items = await req.Model.find().setOptions(queryOptions).limit(10)
+    res.send(items)
+  });
+
+  // 查询分类
+  router.get('/:id', async (req, res) => {
+    const model = await req.Model.findById(req.params.id);
+    res.send(model);
+  });
+
+  app.use('/admin/api/rest/:resource',  (req, res, next)=>{
+    const modelName = require('inflection').classify(req.params.resource);
+    req.Model = require(`../../models/${modelName}`)
+    next();
+  },router)
+
+}
+
+
