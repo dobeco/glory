@@ -30,9 +30,9 @@ const router = new Router({
         { path: '/categories/edit/:id', component: CategoryEdit, meta: { title: '编辑列表' }, props: true }, //props把id注入到这个页面
         { path: '/categories/list', component: CategoryList, meta: { title: '分类列表' } },
 
-        { path: '/item/create', component: ItemEdit, meta: { title: '新建物品' } },
-        { path: '/item/edit/:id', component: ItemEdit, meta: { title: '编辑物品' }, props: true },
-        { path: '/item/list', component: ItemList, meta: { title: '物品列表' }},
+        { path: '/items/create', component: ItemEdit, meta: { title: '新建物品' } },
+        { path: '/items/edit/:id', component: ItemEdit, meta: { title: '编辑物品' }, props: true },
+        { path: '/items/list', component: ItemList, meta: { title: '物品列表' }},
 
         { path: '/heroes/create', component: HeroEdit, meta: { title: '新建英雄' } },
         { path: '/heroes/edit/:id', component: HeroEdit, meta: { title: '编辑英雄' }, props: true },
