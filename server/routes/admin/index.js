@@ -89,6 +89,14 @@ module.exports = app => {
     next();
   },router)
 
+  const multer = require('multer');
+  const upload = multer({dest: __dirname+ '/../../public/uploads'})
+  app.post('/admin/api/upload', upload.single('file'), function(req, res) {
+    const file = req.file;
+    file.url = `http://localhost:3000/uploads/${file.filename}`
+    res.send(file)
+  })
+
 }
 
 
