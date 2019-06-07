@@ -11,6 +11,10 @@ const ItemList = () => import( /* webpackChunkName: "main" */ './views/ItemList.
 const HeroEdit = () => import( /* webpackChunkName: "main" */ './views/HeroEdit.vue')
 const HeroList = () => import( /* webpackChunkName: "main" */ './views/HeroList.vue')
 
+const ArticleEdit = () => import( /* webpackChunkName: "main" */ './views/ArticleEdit.vue')
+const ArticleList = () => import( /* webpackChunkName: "main" */ './views/ArticleList.vue')
+
+
 Vue.use(Router)
 
 
@@ -37,6 +41,10 @@ const router = new Router({
         { path: '/heroes/create', component: HeroEdit, meta: { title: '新建英雄' } },
         { path: '/heroes/edit/:id', component: HeroEdit, meta: { title: '编辑英雄' }, props: true },
         { path: '/heroes/list', component: HeroList, meta: { title: '英雄列表' } },
+
+        { path: '/articles/create', component: ArticleEdit, meta: { title: '新建文章' } },
+        { path: '/articles/edit/:id', component: ArticleEdit, meta: { title: '编辑文章' }, props: true },
+        { path: '/articles/list', component: ArticleList, meta: { title: '文章列表' } },
       ]
     }
   ]
