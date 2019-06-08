@@ -13,7 +13,9 @@ Vue.use(VueAwesomeSwiper)
 import Card from './components/Card.vue'
 Vue.component('m-card', Card)
 
-
+//列表卡片组件
+import ListCard from './components/ListCard.vue'
+Vue.component('m-list-card', ListCard)
 Vue.config.productionTip = false
 
 new Vue({
