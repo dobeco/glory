@@ -7,6 +7,7 @@ const http = axios.create({
 })
 http.interceptors.request.use(function (config) {
     // Do something before request is sent
+    // 登录用户添加请求headers
     if (localStorage.token) {
         config.headers.Authorization = 'Bearer ' + localStorage.token
     }
@@ -23,7 +24,7 @@ http.interceptors.response.use(res => {
             type: 'error',
             message: err.response.data.message
         })
-
+     
         if (err.response.status === 401) {
             router.push('/login')
         }
