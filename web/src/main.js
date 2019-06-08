@@ -9,6 +9,10 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
 
+// 自定义卡片组件
+import Card from './components/Card.vue'
+Vue.component('m-card', Card)
+
 
 Vue.config.productionTip = false
 

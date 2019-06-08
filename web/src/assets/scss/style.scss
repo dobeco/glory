@@ -140,16 +140,30 @@ $type in $spacing-types {
 
 // nav
 .nav {
+    display: flex;
+
     .nav-item {
         border-bottom: 3px solid transparent;
         padding-bottom: 0.2rem;
 
         &.active {
-            border-bottom: 3px solid #fff;
+            color: map-get($colors, 'primary');
+            border-bottom-color: map-get($colors, 'primary');
+        }
+    }
+
+    &.nav-inverse {
+        .nav-item {
+            color: map-get($colors, 'white');
+
+            &.active {
+                border-bottom-color: map-get($colors, 'white');
+            }
         }
     }
 
 }
+
 // sprite
 .sprite {
     background: url(../images/index.png) no-repeat 0 0;
