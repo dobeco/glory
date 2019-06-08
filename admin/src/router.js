@@ -2,20 +2,23 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 const Main = () => import( /* webpackChunkName: "main" */ './views/Main.vue')
-const CategoryEdit = () => import( /* webpackChunkName: "main" */ './views/CategoryEdit.vue')
-const CategoryList = () => import( /* webpackChunkName: "main" */ './views/CategoryList.vue')
+const CategoryEdit = () => import( /* webpackChunkName: "category-edit" */ './views/CategoryEdit.vue')
+const CategoryList = () => import( /* webpackChunkName: "category-list" */ './views/CategoryList.vue')
 
-const ItemEdit = () => import( /* webpackChunkName: "main" */ './views/itemEdit.vue')
-const ItemList = () => import( /* webpackChunkName: "main" */ './views/ItemList.vue')
+const ItemEdit = () => import( /* webpackChunkName: "item-edit" */ './views/itemEdit.vue')
+const ItemList = () => import( /* webpackChunkName: "item-list" */ './views/ItemList.vue')
 
-const HeroEdit = () => import( /* webpackChunkName: "main" */ './views/HeroEdit.vue')
-const HeroList = () => import( /* webpackChunkName: "main" */ './views/HeroList.vue')
+const HeroEdit = () => import( /* webpackChunkName: "hero-edit" */ './views/HeroEdit.vue')
+const HeroList = () => import( /* webpackChunkName: "hero-list" */ './views/HeroList.vue')
 
-const ArticleEdit = () => import( /* webpackChunkName: "main" */ './views/ArticleEdit.vue')
-const ArticleList = () => import( /* webpackChunkName: "main" */ './views/ArticleList.vue')
+const ArticleEdit = () => import( /* webpackChunkName: "article-edit" */ './views/ArticleEdit.vue')
+const ArticleList = () => import( /* webpackChunkName: "article-list" */ './views/ArticleList.vue')
 
-const AdEdit = () => import( /* webpackChunkName: "main" */ './views/AdEdit.vue')
-const AdList = () => import( /* webpackChunkName: "main" */ './views/AdList.vue')
+const AdEdit = () => import( /* webpackChunkName: "ad-edit" */ './views/AdEdit.vue')
+const AdList = () => import( /* webpackChunkName: "ad-list" */ './views/AdList.vue')
+
+const AdminUserEdit = () => import( /* webpackChunkName: "user" */ './views/AdminUserEdit.vue')
+const AdminUserList = () => import( /* webpackChunkName: "user-edit" */ './views/AdminUserList.vue')
 
 Vue.use(Router)
 
@@ -51,6 +54,10 @@ const router = new Router({
         { path: '/ads/create', component: AdEdit, meta: { title: '新建广告' } },
         { path: '/ads/edit/:id', component: AdEdit, meta: { title: '编辑广告' }, props: true },
         { path: '/ads/list', component: AdList, meta: { title: '广告列表' } },
+
+        { path: '/admin_users/create', component: AdminUserEdit },
+        { path: '/admin_users/edit/:id', component: AdminUserEdit, props: true },
+        { path: '/admin_users/list', component: AdminUserList },
       ]
     }
   ]
