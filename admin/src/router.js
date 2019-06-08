@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 const Main = () => import( /* webpackChunkName: "main" */ './views/Main.vue')
+const Login = () => import( /* webpackChunkName: "login" */ './views/Login.vue')
 const CategoryEdit = () => import( /* webpackChunkName: "category-edit" */ './views/CategoryEdit.vue')
 const CategoryList = () => import( /* webpackChunkName: "category-list" */ './views/CategoryList.vue')
 
@@ -59,6 +60,12 @@ const router = new Router({
         { path: '/admin_users/edit/:id', component: AdminUserEdit, props: true },
         { path: '/admin_users/list', component: AdminUserList },
       ]
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      meta: {titel: '登录'},
+      component: Login
     }
   ]
 })
