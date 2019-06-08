@@ -14,6 +14,8 @@ const HeroList = () => import( /* webpackChunkName: "main" */ './views/HeroList.
 const ArticleEdit = () => import( /* webpackChunkName: "main" */ './views/ArticleEdit.vue')
 const ArticleList = () => import( /* webpackChunkName: "main" */ './views/ArticleList.vue')
 
+const AdEdit = () => import( /* webpackChunkName: "main" */ './views/AdEdit.vue')
+const AdList = () => import( /* webpackChunkName: "main" */ './views/AdList.vue')
 
 Vue.use(Router)
 
@@ -45,6 +47,10 @@ const router = new Router({
         { path: '/articles/create', component: ArticleEdit, meta: { title: '新建文章' } },
         { path: '/articles/edit/:id', component: ArticleEdit, meta: { title: '编辑文章' }, props: true },
         { path: '/articles/list', component: ArticleList, meta: { title: '文章列表' } },
+
+        { path: '/ads/create', component: AdEdit, meta: { title: '新建广告' } },
+        { path: '/ads/edit/:id', component: AdEdit, meta: { title: '编辑广告' }, props: true },
+        { path: '/ads/list', component: AdList, meta: { title: '广告列表' } },
       ]
     }
   ]

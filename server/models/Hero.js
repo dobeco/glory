@@ -23,9 +23,9 @@ const schema = new mongoose.Schema({
   battleTips: { type: String },
   teamTips: { type: String },
   partners: [{
-    hero: { type: mongoose.SchemaTypes.ObjectId, ref: 'Hero' },
+    hero: { type: mongoose.SchemaTypes.ObjectId, ref: 'heros' },
     description: { type: String },
   }],
 })
 
-module.exports = mongoose.model('Hero', schema)
+module.exports = mongoose.model('heros', schema)
