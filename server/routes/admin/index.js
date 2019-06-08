@@ -54,9 +54,9 @@ module.exports = app => {
   app.use('/admin/api/rest/:resource', authMiddleware(), resourceMiddleware() ,router)
 
   const multer = require('multer');
-  const upload = multer({dest: __dirname+ '/../../public/uploads'})
-  app.post('/admin/api/upload', authMiddleware(),upload.single('file'), function(req, res) {
-    const file = req.file;
+  const upload = multer({dest: __dirname+ '/../../public/uploads'});
+  app.post('/admin/api/upload', authMiddleware(), upload.single('file'), async (req, res) => {
+    const file = req.file
     file.url = `http://localhost:3000/uploads/${file.filename}`
     res.send(file)
   })
@@ -86,8 +86,4 @@ module.exports = app => {
     res.send({ token }) 
   })
 
-
-
 }
-
-

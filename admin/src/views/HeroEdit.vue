@@ -12,9 +12,11 @@
             <el-input v-model="model.title"></el-input>
           </el-form-item>
           <el-form-item label="头像">
+            <!-- 在main.js里封装上传的图片地址和用户请求头 uploadUrl :action="$http.defaults.baseURL + '/upload'" -->
             <el-upload
               class="avatar-uploader"
-              :action="$http.defaults.baseURL + '/upload'"
+              :action="uploadUrl"
+              :headers= "getAuthHeaders()"
               :show-file-list="false"
               :on-success="afterUpload"
             >
@@ -79,7 +81,8 @@
               <el-form-item label="图标">
                 <el-upload
                   class="avatar-uploader"
-                  :action="$http.defaults.baseURL + '/upload'"
+                  :action="uploadUrl"
+                  :headers= "getAuthHeaders()"
                   :show-file-list="false"
                   :on-success="res => $set(item, 'icon', res.url)"
                 >
