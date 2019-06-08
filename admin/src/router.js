@@ -25,7 +25,7 @@ Vue.use(Router)
 
 
 const router = new Router({
-  // mode: 'history',
+  mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
@@ -64,11 +64,12 @@ const router = new Router({
     {
       path: '/login',
       name: 'Login',
-      meta: {titel: '登录'},
+      meta: { titel: '登录', isPublic: true},
       component: Login
     }
   ]
 })
+
 
 // 骚操作,切换路由title跟着改变
 /* router.beforeEach((to, from, next) => {
@@ -77,7 +78,12 @@ const router = new Router({
     document.title = to.meta.title
   }
   next()
-}) */
-
-
+})
+ */
+router.beforeEach((to, from, next) => {
+  if (!to.meta.isPublic && !localStorage.token) {
+    return next('/login')
+  }
+  next()
+})
 export default router
