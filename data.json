@@ -1,0 +1,25 @@
+{   
+    "message": 200,
+    "categories": [
+        {
+            "name": "新闻资讯",
+            "children": [
+                {"name": "热门", "articles": [] },
+                {"name": "新闻","articles": [] },
+                {"name": "公告",   "articles": [] },
+                {"name": "活动",   "articles": [] },
+                {"name": "赛事",   "articles": [] }
+             ]
+        },
+        {
+            "name": "英雄列表",
+            "children": []
+        },
+        {
+            "name": "精彩视频",
+            "children": []
+        }
+
+    ]
+
+}
