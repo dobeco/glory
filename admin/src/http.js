@@ -17,7 +17,7 @@ function endLoading() {
 } */
 
 const http = axios.create({
-    baseURL: 'http://localhost:3000/admin/api',
+    baseURL: 'http://localhost:9000/admin/api',
     timeout: 5000
 })
 
