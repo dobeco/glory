@@ -82,7 +82,7 @@ module.exports = app => {
       })
     } */
     // 3.返回token
-    const token = jwt.sign({ id: user._id }, app.get('secret'))
+    const token = jwt.sign({ id: user._id }, app.get('secret'), {expiresIn:100})
     res.send({ token }) 
   })
 
