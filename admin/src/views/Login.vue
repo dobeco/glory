@@ -22,8 +22,8 @@ export default {
   data() {
     return {
       model: {
-        username: '',
-        password: ''
+        username: 'dobeco',
+        password: '123456'
       },
       rules: {
         username: { required: true, message: '用户名不能为空', trigger: 'blur' },
@@ -85,7 +85,7 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 .login-container {
   min-height: 100vh;
   background-image: url("../assets/images/login_bg.jpg");

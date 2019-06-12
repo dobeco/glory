@@ -20,7 +20,7 @@ Vue.mixin({
     // 为上传图片添加请求头，上传文件的登录校验
     getAuthHeaders() {
       return {
-         Authorization: `Bearer ${localStorage.token || ''}`
+         Authorization: `Bearer ${localStorage.gloryToken || ''}`
       }
     }
   }

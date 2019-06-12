@@ -9,6 +9,11 @@ const schema = new mongoose.Schema({
             return bcrypt.hashSync(val, 10)
         }
     },
+    avatar: { type: String},
+    date: {
+        type: Date,
+        default: new Date
+    }
 })
 
 module.exports = mongoose.model('AdminUser', schema)

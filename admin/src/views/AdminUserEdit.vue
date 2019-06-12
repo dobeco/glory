@@ -9,6 +9,19 @@
       <el-form-item label="密码">
         <el-input type="text" v-model="model.password"></el-input>
       </el-form-item>
+       <el-form-item label="头像">
+            <!-- 在main.js里封装上传的图片地址和用户请求头 uploadUrl :action="$http.defaults.baseURL + '/upload'" -->
+            <el-upload
+              class="avatar-uploader"
+              :action="uploadUrl"
+              :headers= "getAuthHeaders()"
+              :show-file-list="false"
+              :on-success="afterUpload"
+            >
+              <img v-if="model.avatar" :src="model.avatar" class="avatar">
+              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+          </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
       </el-form-item>
@@ -23,11 +36,18 @@ export default {
   },
   data(){
     return {
-      model: {},
+      model: {
+        username: '',
+        password: '',
+        avatar: ''
+      },
       
     }
   },
   methods: {
+       afterUpload(res) {
+      this.model.avatar = res.url;
+    },
     async save(){
       let res
       if (this.id) {

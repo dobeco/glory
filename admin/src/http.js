@@ -26,7 +26,7 @@ http.interceptors.request.use(function (config) {
     // Do something before request is sent
     // 登录用户添加请求headers
     // startLoading()
-    if (localStorage.token) {
+    if (localStorage.gloryToken) {
         config.headers.Authorization = 'Bearer ' + localStorage.gloryToken
     }
 
@@ -48,7 +48,7 @@ http.interceptors.response.use(res => {
             })
 
             if (err.response.status === 401) {
-                Message.error('登录信息已失效,请重新登录')
+                 Message.error('登录信息已失效,请重新登录')
                 localStorage.removeItem('gloryToken')
                 router.push('/login')
             }

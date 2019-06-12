@@ -1,9 +1,7 @@
 <template>
   <el-container style="height: 100vh;">
-    <el-header>Header</el-header>
-    <el-container>
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-      <el-menu router :default-active="$route.path" unique-opened>
+    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+      <el-menu router  :default-active="$route.path" collapse-transition="true">
         <el-submenu index="1">
           <template slot="title">
             <i class="el-icon-message"></i>内容管理
@@ -27,7 +25,7 @@
 
         <el-submenu index="2">
           <template slot="title">
-            <i class="el-icon-s-platform"></i>运营管理
+            <i class="el-icon-message"></i>运营管理
           </template>
           <el-menu-item-group>
             <template slot="title">广告位</template>
@@ -38,7 +36,7 @@
 
         <el-submenu index="3">
           <template slot="title">
-            <i class="el-icon-setting"></i>系统设置
+            <i class="el-icon-message"></i>系统设置
           </template>
           <el-menu-item-group>
             <template slot="title">分类</template>
@@ -53,18 +51,66 @@
         </el-submenu>
       </el-menu>
     </el-aside>
+
+    <el-container>
+      <el-header style="text-align:right;  font-size: 12px">
+        <img :src="this.$store.state.user.avatar" class="user-avatar" alt>
+        <el-dropdown trigger="click" @command="setDialogInfo">
+          <span class="el-dropdown-link">
+            {{this.$store.state.user.name}}
+            <i class="el-icon-setting" style="margin-right: 15px"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="info">个人信息</el-dropdown-item>
+            <el-dropdown-item command="logout">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </el-header>
+
       <el-main>
         <router-view :key="$route.path"></router-view>
       </el-main>
-
- 
     </el-container>
-    
   </el-container>
 </template>
 
 
-<style>
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    setDialogInfo(cmdItem) {
+      console.log(cmdItem);
+      switch (cmdItem) {
+        case 'info':
+          this.showInfoList();
+          break;
+        case 'logout':
+          this.handleLogout();
+          break;
+      }
+    },
+    showInfoList() {
+      // 个人信息
+      console.log('to do');
+
+      //this.$router.push("/infoshow");
+    },
+    handleLogout() {
+      // 清除token
+      localStorage.removeItem("gloryToken");
+      this.$store.dispatch("clearCurrentState");
+
+      // 页面跳转
+      this.$router.push("/login");
+    }
+  }
+};
+</script>
+
+<style lang="scss">
 .el-header {
   background-color: #b3c0d1;
   color: #333;
@@ -74,15 +120,16 @@
 .el-aside {
   color: #333;
 }
+.el-dropdown {
+  color: #fff;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 15px;
+}
 </style>
-
-<script>
-export default {
-  data() {
-
-    return {
-
-    };
-  }
-};
-</script>

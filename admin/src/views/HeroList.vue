@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>英雄列表</h1>
-    <el-table :data="items">
+    <el-table :data="items" border>
       <el-table-column prop="_id" label="ID" width="240"></el-table-column>
       <el-table-column prop="name" label="英雄名称"></el-table-column>
       <el-table-column prop="title" label="称号"></el-table-column>
@@ -13,11 +13,11 @@
       <el-table-column fixed="right" label="操作" width="180">
         <template slot-scope="scope">
           <el-button
-            type="text"
+            type="primary" plain
             size="small"
             @click="$router.push(`/heroes/edit/${scope.row._id}`)"
           >编辑</el-button>
-          <el-button type="text" size="small" @click="remove(scope.row)">删除</el-button>
+          <el-button type="danger" plain size="small" @click="remove(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
