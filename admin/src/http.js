@@ -27,7 +27,7 @@ http.interceptors.request.use(function (config) {
     // 登录用户添加请求headers
     // startLoading()
     if (localStorage.token) {
-        config.headers.Authorization = 'Bearer ' + localStorage.token
+        config.headers.Authorization = 'Bearer ' + localStorage.gloryToken
     }
 
     return config;
@@ -41,19 +41,33 @@ http.interceptors.response.use(res => {
     // endLoading()
     return res
 }, err => {
+        if (err.response.data.message) {
+            Message({
+                type: 'error',
+                message: err.response.data.message
+            })
+
+            if (err.response.status === 401) {
+                Message.error('登录信息已失效,请重新登录')
+                localStorage.removeItem('gloryToken')
+                router.push('/login')
+            }
+        }
+
 
     // endLoading();
-    if (err.response.status === 504 || err.response.status == 404) {
+   /*  if (err.response.status === 504 || err.response.status == 404) {
         Message.error({ message: '服务器被吃了⊙﹏⊙∥' });
     } else if (err.response.status === 401) {
         Message.error({ message: '登录信息已过期,请重新登录' });
+        localStorage.removeItem('gloryToken')
         router.push('/login')
     } else {
         Message({
             type: 'error',
             message: err.response.data.message
         })
-    }
+    } */
 
 
 

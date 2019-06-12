@@ -1,8 +1,8 @@
 <template>
   <div class="login-container">
     <el-form class="login-form" :model="model" :rules="rules" ref="loginForm">
-      <h3 class="title">系统登录</h3>
-      <p class="tip">默认账号: admin 密码: admin</p>
+      <h3 class="title">王者荣耀后台管理系统</h3>
+      <p class="tip">体验账号: admin 密码: admin</p>
       <el-form-item prop="username">
         <el-input v-model="model.username" placeholder="用户名"></el-input>
       </el-form-item>
@@ -16,6 +16,7 @@
   </div>
 </template>
 <script>
+import jwt_decode from 'jwt-decode'
 export default {
 
   data() {
@@ -36,8 +37,18 @@ export default {
       this.$refs[formName].validate(async valid => {
         if (valid) {
           const res = await this.$http.post('login', this.model)
-          const {token} = res.data;
-          localStorage.token = token
+
+          // 存储token
+          const { token } = res.data;
+          localStorage.setItem('gloryToken', token)
+
+          // 解析token
+          const decode = jwt_decode(token);
+
+          // 存储数据
+          this.$store.dispatch("setIsAutnenticated", !this.isEmpty(decode));
+          this.$store.dispatch("setUser", decode);
+
           this.$router.push('/')
           this.$message({
             type: 'success',
@@ -61,6 +72,15 @@ export default {
         }
       });
     },
+    // 判断是否为空函数
+    isEmpty(value) {
+      return (
+        value === undefined ||
+        value === null ||
+        (typeof value === "object" && Object.keys(value).length === 0) ||
+        (typeof value === "string" && value.trim().length === 0)
+      );
+    }
   }
 }
 </script>
@@ -68,7 +88,7 @@ export default {
 <style lang="scss" >
 .login-container {
   min-height: 100vh;
-  background-image: url('../assets/images/login_bg.jpg');
+  background-image: url("../assets/images/login_bg.jpg");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +106,7 @@ export default {
       text-align: center;
       color: #505458;
     }
-    .tip{
+    .tip {
       color: red;
     }
     .login {

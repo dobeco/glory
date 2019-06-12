@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+
 import Home from './views/Home.vue'
 const Main = () => import( /* webpackChunkName: "main" */ './views/Main.vue')
 const Login = () => import( /* webpackChunkName: "login" */ './views/Login.vue')
@@ -66,7 +68,13 @@ const router = new Router({
       name: 'Login',
       meta: { titel: '登录', isPublic: true},
       component: Login
-    }
+    },
+    {
+      path: '/404',
+      component: () => import('@/views/404'),
+    },
+    // 404 page must be placed at the end !!!
+    { path: '*', redirect: '/404'  }
   ]
 })
 
@@ -81,7 +89,7 @@ const router = new Router({
 })
  */
 router.beforeEach((to, from, next) => {
-  if (!to.meta.isPublic && !localStorage.token) {
+  if (!to.meta.isPublic && !localStorage.gloryToken) {
     return next('/login')
   }
   next()
