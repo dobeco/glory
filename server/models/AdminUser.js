@@ -14,6 +14,6 @@ const schema = new mongoose.Schema({
         type: Date,
         default: new Date
     }
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model('AdminUser', schema)
