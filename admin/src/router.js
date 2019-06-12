@@ -44,7 +44,7 @@ const router = new Router({
 
         { path: '/items/create', component: ItemEdit, meta: { title: '新建物品' } },
         { path: '/items/edit/:id', component: ItemEdit, meta: { title: '编辑物品' }, props: true },
-        { path: '/items/list', component: ItemList, meta: { title: '物品列表' }},
+        { path: '/items/list', component: ItemList, meta: { title: '物品列表' } },
 
         { path: '/heroes/create', component: HeroEdit, meta: { title: '新建英雄' } },
         { path: '/heroes/edit/:id', component: HeroEdit, meta: { title: '编辑英雄' }, props: true },
@@ -66,7 +66,7 @@ const router = new Router({
     {
       path: '/login',
       name: 'Login',
-      meta: { titel: '登录', isPublic: true},
+      meta: { titel: '登录', isPublic: true },
       component: Login
     },
     {
@@ -74,7 +74,7 @@ const router = new Router({
       component: () => import('@/views/404'),
     },
     // 404 page must be placed at the end !!!
-    { path: '*', redirect: '/404'  }
+    { path: '*', redirect: '/404' }
   ]
 })
 
