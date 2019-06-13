@@ -27,18 +27,7 @@
     <el-row>
       <el-col :span="24">
         <div class="pagination">
-         <!--  <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="currentPage4"
-            :page-sizes="[100, 200, 300, 400]"
-            :page-size="100"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="400"
-          ></el-pagination> -->
-
           <el-pagination
-            :prev-text="上一页"
             v-if="paginations.total > 0"
             :page-sizes="paginations.page_sizes"
             :page-size="paginations.page_size"
