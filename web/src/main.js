@@ -5,6 +5,9 @@ import store from './store'
 import './assets/iconfont/iconfont.css'
 import './assets/scss/style.scss'
 
+import http from './http'
+Vue.prototype.$http = http
+
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
