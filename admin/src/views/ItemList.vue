@@ -3,7 +3,6 @@
     <h1>物品列表</h1>
     <el-table :data="tableData" border max-height="600" >
       <el-table-column prop="_id" label="ID" width="240"></el-table-column>
-      <el-table-column prop="parent.name" label="上级分类"></el-table-column>
       <el-table-column prop="name" label="物品名称"></el-table-column>
       <el-table-column prop="icon" label="图标">
         <template slot-scope="scope">

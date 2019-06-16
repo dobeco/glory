@@ -6,7 +6,7 @@
         <!-- 基础信息 -->
         <el-tab-pane label="基础信息">
           <el-form-item label="名称" prop="name">
-            <el-input v-model="model.name" type="text"  max="10"></el-input>
+            <el-input v-model="model.name" type="text" max="10"></el-input>
           </el-form-item>
           <el-form-item label="称号" prop="title">
             <el-input v-model="model.title"></el-input>
@@ -47,12 +47,12 @@
             <el-rate style="margin-top:0.6rem" :max="9" show-score v-model="model.scores.survive"></el-rate>
           </el-form-item>
 
-          <el-form-item label="顺风出装" prop="equip">
+          <el-form-item label="顺风出装">
             <el-select v-model="model.items1" multiple :multiple-limit="6">
               <el-option v-for="item of items" :key="item._id" :label="item.name" :value="item._id"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="逆风出装"  prop="equip">
+          <el-form-item label="逆风出装">
             <el-select v-model="model.items2" multiple :multiple-limit="6">
               <el-option v-for="item of items" :key="item._id" :label="item.name" :value="item._id"></el-option>
             </el-select>
@@ -141,11 +141,11 @@ export default {
       rules: {
         name: [
           { required: true, message: '请输入英雄名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          { max: 10, message: '长度不能超过 10 个字符', trigger: 'blur' }
         ],
         title: [
           { required: true, message: '请输入英雄称号', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          { max: 10, message: '长度不能超过 10 个字符', trigger: 'blur' }
         ],
         avatar: { required: true, message: '请上传英雄头像', trigger: 'blur' },
         categories: { required: true, message: '至少选择一个类型', trigger: 'blur' },

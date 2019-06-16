@@ -37,6 +37,7 @@ const router = new Router({
         title: '王者荣耀后台管理系统',
       },
       component: Main,
+      redirect: '/items/list',
       children: [
         { path: '/categories/create', component: CategoryEdit, meta: { title: '新建分类' } },
         { path: '/categories/edit/:id', component: CategoryEdit, meta: { title: '编辑列表' }, props: true }, //props把id注入到这个页面

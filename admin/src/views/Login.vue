@@ -1,13 +1,12 @@
 <template>
   <div class="login-container">
     <el-form class="login-form" :model="model" :rules="rules" ref="loginForm">
-      <h3 class="title">王者荣耀后台管理系统</h3>
-      <p class="tip">体验账号: admin 密码: admin</p>
-      <el-form-item prop="username">
-        <el-input v-model="model.username" placeholder="用户名"></el-input>
+      <h3 class="title">系统登录</h3>
+      <el-form-item prop="username" label="用户名">
+        <el-input v-model="model.username" placeholder="dobeco"></el-input>
       </el-form-item>
-      <el-form-item prop="password">
-        <el-input type="password" v-model="model.password" placeholder="密码"></el-input>
+      <el-form-item prop="password" label="密码">
+        <el-input type="password" v-model="model.password" placeholder="123456"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" class="login" @click="handleLogin('loginForm')">登录</el-button>
@@ -22,8 +21,8 @@ export default {
   data() {
     return {
       model: {
-        username: 'dobeco',
-        password: '123456'
+        username: '',
+        password: ''
       },
       rules: {
         username: { required: true, message: '用户名不能为空', trigger: 'blur' },
@@ -100,14 +99,11 @@ export default {
     width: 350px;
     padding: 35px 35px 15px 35px;
     background: #fff;
-    box-shadow: 0 0 25px #cac6c6;
+  
     .title {
       margin: 0px auto 40px auto;
       text-align: center;
       color: #505458;
-    }
-    .tip {
-      color: red;
     }
     .login {
       width: 100%;
