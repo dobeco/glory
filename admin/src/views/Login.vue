@@ -3,10 +3,10 @@
     <el-form class="login-form" :model="model" :rules="rules" ref="loginForm">
       <h3 class="title">系统登录</h3>
       <el-form-item prop="username" label="用户名">
-        <el-input v-model="model.username" placeholder="dobeco"></el-input>
+        <el-input v-model="model.username" placeholder="username"></el-input>
       </el-form-item>
       <el-form-item prop="password" label="密码">
-        <el-input type="password" v-model="model.password" placeholder="123456"></el-input>
+        <el-input type="password" v-model="model.password" placeholder="password"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" class="login" @click="handleLogin('loginForm')">登录</el-button>
