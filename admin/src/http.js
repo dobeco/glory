@@ -17,7 +17,9 @@ function endLoading() {
 } */
 
 const http = axios.create({
-    baseURL: 'http://localhost:9000/admin/api',
+    //baseURL: 'http://localhost:9000/admin/api',
+    baseURL: process.env.VUE_APP_API_URL || '/admin/api',
+    
     timeout: 5000
 })
 

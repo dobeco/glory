@@ -4,7 +4,8 @@ import router from './router'
 //import { Message } from 'element-ui'
 
 const http = axios.create({
-    baseURL: 'http://localhost:9000/web/api',
+    // baseURL: 'http://localhost:9000/web/api',
+    baseURL: process.env.VUE_APP_API_URL || '/web/api',
     timeout: 5000
 })
 
