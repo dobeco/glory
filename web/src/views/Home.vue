@@ -42,15 +42,17 @@
     <m-list-card icon="card-hero" title="英雄列表" :categories="heorCats">
       <template #items="{category}">
         <div class="d-flex flex-wrap" style="margin: 0 -0.5rem">
-          <div
+          <router-link
+            tag="div"
             class="p-2 text-center"
+            :to="`/heroes/${hero._id}`"
             style="width: 20%"
             v-for="(hero, i) in category.heroList"
             :key="i"
           >
             <img class="w-100" :src="hero.avatar" alt="英雄头像" />
             <div>{{hero.name}}</div>
-          </div>
+          </router-link>
         </div>
       </template>
     </m-list-card>

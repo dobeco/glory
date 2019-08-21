@@ -137,6 +137,13 @@ module.exports = app => {
     res.send(data)
   })
 
+  // 英雄详情
+  router.get('/heroes/:id', async (req,res) => {
+    const data = await Hero.findById(req.params.id).populate('categories items1 items2 partners.hero').lean();
+    // .populate('categories items1 items2 partners.hero') 把关联的表取出来
+    res.send(data)
+  })
+
 
 
   app.use('/web/api', router)
