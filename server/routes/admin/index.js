@@ -47,7 +47,7 @@ module.exports = app => {
     const upload = multer({ dest: __dirname + '/../../public/uploads' })
     app.post('/admin/api/upload', authMiddleware(), upload.single('file'), async (req, res) => {
         const file = req.file
-        file.url = `http://localhost:9000/uploads/${file.filename}`
+        file.url = `https://glory.dobeco.cn:9000/uploads/${file.filename}`
         res.send(file)
     })
 
