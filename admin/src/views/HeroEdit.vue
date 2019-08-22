@@ -193,7 +193,7 @@ export default {
         ],
         title: [
           { required: true, message: '请输入英雄称号', trigger: 'blur' },
-          { max: 10, message: '长度不能超过 10 个字符', trigger: 'blur' }
+          { max: 20, message: '长度不能超过 20 个字符', trigger: 'blur' }
         ],
         avatar: { required: true, message: '请上传英雄头像', trigger: 'blur' },
         categories: { required: true, message: '至少选择一个类型', trigger: 'blur' },

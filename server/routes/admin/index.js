@@ -44,10 +44,10 @@ module.exports = app => {
     app.use('/admin/api/rest/:resource', authMiddleware(), resourceMiddleware(), router)
 
     const multer = require('multer')
-    const upload = multer({ dest: __dirname + '/../../public/uploads' })
+    const upload = multer({ dest: __dirname + '/../../uploads' })
     app.post('/admin/api/upload', authMiddleware(), upload.single('file'), async (req, res) => {
         const file = req.file
-        file.url = `https://glory.dobeco.cn:9000/uploads/${file.filename}`
+        file.url = `http://glory.dobeco.cn/uploads/${file.filename}`
         res.send(file)
     })
 
